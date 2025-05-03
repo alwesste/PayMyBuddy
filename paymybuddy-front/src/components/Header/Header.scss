@@ -1,0 +1,21 @@
+.container_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &-title {
+    font-weight: bold;
+  }
+
+  &-list {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    font-weight: bold;
+
+    :hover {
+      color: rgb(31, 127, 239);
+      cursor: pointer;
+    }
+  }
+}

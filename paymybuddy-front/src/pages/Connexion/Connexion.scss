@@ -1,0 +1,41 @@
+.container_connexion {
+  height: 25rem;
+  width: 17rem;
+  border: 1.5px solid black;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+
+  &-title {
+    color: white;
+    font-size: 1.1rem;
+    align-content: center;
+    font-weight: bold;
+    background-color: rgb(246, 159, 28);
+    border-radius: 0.5rem;
+    width: 60%;
+    margin-bottom: 5rem;
+    padding: 0.7rem;
+  }
+
+  &-input {
+    width: 12rem;
+    padding: 0.7rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+
+    &::placeholder {
+      font-weight: bold;
+    }
+  }
+
+  &-submit {
+    margin-top: 2rem;
+    background-color: rgb(31, 127, 239);
+    color: white;
+  }
+
+}
