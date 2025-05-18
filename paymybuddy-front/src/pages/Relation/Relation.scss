@@ -1,0 +1,22 @@
+.relation {
+  display:flex;
+  justify-content: center;
+}
+
+.relationForm {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin: 20px;
+
+    &-input {
+    height: 50px;
+    width: 450px;
+    padding-left: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+}
+
+

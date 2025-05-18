@@ -19,3 +19,12 @@
     }
   }
 }
+
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: blue;
+}
