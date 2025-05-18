@@ -1,6 +1,7 @@
 import "./Inscription.scss"
+import React from "react";
 
-const Inscription = () => {
+const Inscription: React.FC = () => {
 
     return (
         <div className="container_inscription">

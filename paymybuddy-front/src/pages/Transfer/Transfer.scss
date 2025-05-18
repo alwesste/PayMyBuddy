@@ -1,0 +1,54 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-transfer {
+  height: 50px;
+  width: 250px;
+  margin: 200px 50px 0px 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding-left: 10px;
+
+  &::placeholder {
+    color: black;
+  }
+
+  &.price {
+    height: 100px;
+    width: 100px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding-left: 10px;
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  &.btn {
+    background-color: rgb(31, 127, 239);
+    color: white;
+    width: 100px;
+    height: 60px;
+    margin-left: 50px;
+   }
+}
+
+.transfer {
+  margin-top: 150px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+
+  &-payment {
+
+    &-detail {
+      display: flex;
+      justify-content: space-between;
+
+    }
+  }
+}
