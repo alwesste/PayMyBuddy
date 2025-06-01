@@ -3,6 +3,7 @@ package com.openclassrooms.paymybuddyback.models;
 import jakarta.persistence.*;
 
 @Entity
+@IdClass(ConnexionId.class)
 public class Connexion {
     @Id
     @Column(name = "user_id_1")
