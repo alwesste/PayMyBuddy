@@ -5,11 +5,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "app_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
+
+    @Column(unique = true)
     private String email;
     private String  password;
 
@@ -18,6 +21,8 @@ public class User {
 
     @OneToMany(mappedBy = "receiver")
     private List<Transaction> receivedTransactions;
+
+    public User() {}
 
     public User(int id, String username, String email, String password, List<Transaction> sentTransactions, List<Transaction> receivedTransactions) {
         this.id = id;
