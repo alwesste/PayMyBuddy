@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddyback.services.impl;
 
 import com.openclassrooms.paymybuddyback.exceptions.EmailAlreadyExistException;
 import com.openclassrooms.paymybuddyback.models.User;
+import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
 import com.openclassrooms.paymybuddyback.services.IregisterUserService;
 import jakarta.transaction.Transactional;
@@ -18,11 +19,15 @@ public class RegisterUserService implements IregisterUserService {
     }
 
     @Override
-    public User register(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new EmailAlreadyExistException("Email déjà utilisé : " + user.getEmail());
+    public User register(UserRegisterDTO userRegisterDTO) {
+        if (userRepository.existsByEmail(userRegisterDTO.getEmail())) {
+            throw new EmailAlreadyExistException("Email déjà utilisé : " + userRegisterDTO.getEmail());
         }
 
+        User user = new User();
+        user.setUsername(userRegisterDTO.getUsername());
+        user.setEmail(userRegisterDTO.getEmail());
+        user.setPassword(userRegisterDTO.getPassword());
         return userRepository.save(user);
     }
 }

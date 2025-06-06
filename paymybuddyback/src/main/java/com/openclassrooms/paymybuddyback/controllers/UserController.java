@@ -1,13 +1,12 @@
 package com.openclassrooms.paymybuddyback.controllers;
 
-import com.openclassrooms.paymybuddyback.exceptions.EmailAlreadyExistException;
-import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.services.IregisterUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -23,18 +22,11 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void registerUser(@RequestBody UserRegisterDTO dto) {
-        logger.info("Utilisateur a ajouter: {} {}", dto.getEmail(), dto.getUsername());
+    public void registerUser(@RequestBody UserRegisterDTO userRegisterDTO) {
+        logger.info("Utilisateur a ajouter: {} {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
 
-        try {
-            User user = new User();
-            user.setUsername(dto.getUsername());
-            user.setEmail(dto.getEmail());
-            user.setPassword(dto.getPassword());
+        registerUserService.register(userRegisterDTO);
+        logger.warn("Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.");
 
-            registerUserService.register(user);
-        } catch (Exception e) {
-            logger.error("Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.");
-        }
     }
 }

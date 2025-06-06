@@ -1,9 +1,10 @@
 package com.openclassrooms.paymybuddyback.services;
 
 import com.openclassrooms.paymybuddyback.models.User;
+import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 
 public interface IregisterUserService {
 
-    public User register(User user);
+    public User register(UserRegisterDTO userRegisterDTO);
 
 }
