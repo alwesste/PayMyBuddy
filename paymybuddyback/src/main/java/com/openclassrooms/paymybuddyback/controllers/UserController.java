@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -23,10 +22,7 @@ public class UserController {
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void registerUser(@RequestBody UserRegisterDTO userRegisterDTO) {
-        logger.info("Utilisateur a ajouter: {} {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
-
+        logger.info("Utilisateur a ajouter: email = {} , prenom = {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
         registerUserService.register(userRegisterDTO);
-        logger.warn("Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.");
-
     }
 }

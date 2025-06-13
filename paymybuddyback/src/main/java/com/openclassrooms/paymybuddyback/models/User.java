@@ -10,10 +10,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String username;
 
     @Column(unique = true)
     private String email;
+
     private String  password;
 
     @OneToMany(mappedBy = "sender")
@@ -21,6 +23,15 @@ public class User {
 
     @OneToMany(mappedBy = "receiver")
     private List<Transaction> receivedTransactions;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_contacts",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "contact_id")
+    )
+    private List<User> contacts;
+
 
     public User() {}
 
