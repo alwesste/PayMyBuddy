@@ -22,4 +22,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleEmailAlreadyExistExceptions(EmailAlreadyExistException  ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
+
+    @ExceptionHandler(InvalidConnexionException.class)
+    public ResponseEntity<String> handleInvalidConnexionException(InvalidConnexionException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ConnexionAlreadyExistException.class)
+    public ResponseEntity<String> handleConnexionAlreadyExist(ConnexionAlreadyExistException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
 }

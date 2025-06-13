@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@AutoConfigureMockMvc // Configure un environnement ed test pour faire des appels HTTP
+@AutoConfigureMockMvc // Configure un environnement de test pour faire des appels HTTP
 @ActiveProfiles(profiles = "test")
 public class TransactionControllerTest {
 

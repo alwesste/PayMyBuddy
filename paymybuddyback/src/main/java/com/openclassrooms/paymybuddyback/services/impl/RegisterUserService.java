@@ -6,11 +6,15 @@ import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
 import com.openclassrooms.paymybuddyback.services.IregisterUserService;
 import jakarta.transaction.Transactional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class RegisterUserService implements IregisterUserService {
+
+    private final static Logger logger = LogManager.getLogger(RegisterUserService.class);
 
     private final UserRepository userRepository;
 
@@ -21,6 +25,7 @@ public class RegisterUserService implements IregisterUserService {
     @Override
     public User register(UserRegisterDTO userRegisterDTO) {
         if (userRepository.existsByEmail(userRegisterDTO.getEmail())) {
+            logger.error("Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.");
             throw new EmailAlreadyExistException("Email déjà utilisé : " + userRegisterDTO.getEmail());
         }
 
