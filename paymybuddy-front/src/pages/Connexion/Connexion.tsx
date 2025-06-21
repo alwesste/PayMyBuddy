@@ -1,13 +1,42 @@
 import "./Connexion.scss"
-import React from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 const Connexion: React.FC = () => {
 
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
 
-    function handleLogin() {
-        navigate('/transfer')
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = () => {
+        fetch("http://localhost:8080/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+            if (!response.ok) {
+                console.log(response)
+               throw new Error("Le mot de passe ou le nom d'utilisateur est errone");
+            }
+            navigate("/transfer");
+        })
+            .catch(error => {
+                console.error("Erreur" ,error);
+                setErrorMessage(error.message);
+            })
     }
 
     return (
@@ -19,19 +48,30 @@ const Connexion: React.FC = () => {
                 type="email"
                 name="email"
                 placeholder="Mail"
+                value={formData.email}
+                onChange={handleChange}
             />
 
             <input
                 className="container_connexion-input"
                 type="password"
                 name="password"
-                placeholder="Mot de passe"/>
+                placeholder="Mot de passe"
+                value={formData.password}
+                onChange={handleChange}
+            />
+            {errorMessage && (
+                <p>
+                    {errorMessage}
+                </p>
+            )}
 
             <button
                 className="container_connexion-submit"
-                onClick={handleLogin}
+                onClick={handleSubmit}
             >
-                Se connecter</button>
+                Se connecter
+            </button>
 
         </div>
     )

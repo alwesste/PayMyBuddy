@@ -6,6 +6,7 @@ import com.openclassrooms.paymybuddyback.exceptions.UserNotFoundException;
 import com.openclassrooms.paymybuddyback.models.Connexion;
 import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.ConnexionDTO;
+import com.openclassrooms.paymybuddyback.modelsDTO.UserConnexionDTO;
 import com.openclassrooms.paymybuddyback.repositories.ConnexionRepository;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
 import com.openclassrooms.paymybuddyback.services.IconnexionService;
@@ -13,6 +14,9 @@ import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -54,6 +58,23 @@ public class ConnexionService implements IconnexionService {
 
         connexionRepository.save(connexion);
     }
+
+    @Override
+    public List<UserConnexionDTO> getAllUserFromConnexion(String currentUserEmail) {
+        User currentUser = userRepository.findByEmail(currentUserEmail)
+                .orElseThrow(() -> new UserNotFoundException("User introuvable : " + currentUserEmail));
+
+        List<Connexion> connexions = connexionRepository.findByUserId1(currentUser.getId());
+
+        return connexions.stream()
+                .map(connexion -> new UserConnexionDTO(
+                        connexion.getUser2().getId(),
+                        connexion.getUser2().getUsername(),
+                        connexion.getUser2().getEmail()
+                ))
+                .toList();
+    }
+
 
 
 }

@@ -12,7 +12,7 @@ function App() {
 
             <Router>
                 <Routes>
-                    <Route path="/" element={<Navigate to="/connexion" replace />} />
+                    <Route path="/" element={<Navigate to="/inscription" replace />} />
                     <Route path="/connexion" element={<Connexion/>} />
                     <Route path="/inscription" element={<Inscription />} />
                     <Route path="/profil" element={<Profil />} />

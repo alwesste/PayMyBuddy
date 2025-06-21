@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddyback.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -24,13 +25,13 @@ public class User {
     @OneToMany(mappedBy = "receiver")
     private List<Transaction> receivedTransactions;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_contacts",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "contact_id")
-    )
-    private List<User> contacts;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "connexion",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "contact_id")
+//    )
+//    private List<User> contacts;
 
 
     public User() {}

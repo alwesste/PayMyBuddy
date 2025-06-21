@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="app_transaction")
+@Table(name = "app_transaction")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,8 @@ public class Transaction {
 
     private Date date;
 
-    public Transaction() {}
+    public Transaction() {
+    }
 
     public Transaction(Date date, double amount, String description, User receiver, User sender, int id) {
         this.date = new Date();
