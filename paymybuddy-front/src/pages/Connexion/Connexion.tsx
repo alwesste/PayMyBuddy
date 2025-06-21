@@ -31,8 +31,14 @@ const Connexion: React.FC = () => {
                 console.log(response)
                throw new Error("Le mot de passe ou le nom d'utilisateur est errone");
             }
-            navigate("/transfer");
+            return response.json();
         })
+            .then(data => {
+                console.log("data", data);
+                localStorage.setItem("currentUserEmail", data.currentUserEmail);
+                navigate("/transfer");
+
+            })
             .catch(error => {
                 console.error("Erreur" ,error);
                 setErrorMessage(error.message);
