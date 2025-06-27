@@ -35,7 +35,8 @@ const Connexion: React.FC = () => {
         })
             .then(data => {
                 console.log("data", data);
-                localStorage.setItem("currentUserEmail", data.currentUserEmail);
+                localStorage.setItem("currentUserEmail", data.email);
+                localStorage.setItem("currentUserPassword", data.password);
                 navigate("/transfer");
 
             })
