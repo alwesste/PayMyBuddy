@@ -1,7 +1,30 @@
 .profil-container {
-  text-align: left;
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+  gap: 1rem;
+  margin: 20vh auto;
+
+
+  &_form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+
+  button {
+    background-color: rgb(246, 159, 28);
+    border-radius: 0.5rem;
+    width: 150px;
+    margin: 30px auto;
+    padding: 0.7rem;
+    color: white;
+  }
 }
