@@ -7,4 +7,5 @@ public interface IregisterUserService {
 
     public User register(UserRegisterDTO userRegisterDTO);
 
+    public User updateUser(UserRegisterDTO userRegisterDTO);
 }

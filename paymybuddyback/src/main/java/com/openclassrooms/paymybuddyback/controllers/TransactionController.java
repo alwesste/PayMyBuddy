@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class TransactionController {
@@ -24,5 +26,11 @@ public class TransactionController {
     public void transaction(@RequestBody TransactionDTO transactionDTO) {
         logger.info("{} envoie {}$ a {}", transactionDTO.getSenderUsername(), transactionDTO.getAmount(), transactionDTO.getReceiverUsername());
         transactionService.moneyTransaction(transactionDTO);
+    }
+
+    @GetMapping("/seeTransaction")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public List<TransactionDTO> seeMoneyTransaction(@RequestParam String currentUserEmail) {
+        return transactionService.seeMeneyTransaction(currentUserEmail);
     }
 }

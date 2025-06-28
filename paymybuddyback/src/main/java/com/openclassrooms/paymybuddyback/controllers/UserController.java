@@ -22,7 +22,23 @@ public class UserController {
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void registerUser(@RequestBody UserRegisterDTO userRegisterDTO) {
-        logger.info("Utilisateur a ajouter: email = {} , prenom = {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
-        registerUserService.register(userRegisterDTO);
+        try{
+            logger.info("Utilisateur a ajouter: email = {} , prenom = {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
+            registerUserService.register(userRegisterDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     }
+
+    @PostMapping("/updatePassword")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    public void updateUser(@RequestBody UserRegisterDTO userRegisterDTO) {
+        logger.info("Le mot de passe a modifier : {}", userRegisterDTO.getPassword());
+        registerUserService.updateUser(userRegisterDTO);
+    }
+
+
 }

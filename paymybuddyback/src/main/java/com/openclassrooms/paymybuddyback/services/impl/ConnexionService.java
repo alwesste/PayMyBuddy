@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -69,8 +68,8 @@ public class ConnexionService implements IconnexionService {
         return connexions.stream()
                 .map(connexion -> new UserConnexionDTO(
                         connexion.getUser2().getId(),
-                        connexion.getUser2().getUsername(),
-                        connexion.getUser2().getEmail()
+                        connexion.getUser2().getEmail(),
+                        connexion.getUser2().getUsername()
                 ))
                 .toList();
     }

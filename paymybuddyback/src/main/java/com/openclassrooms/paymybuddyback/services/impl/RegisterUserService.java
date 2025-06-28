@@ -10,6 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class RegisterUserService implements IregisterUserService {
@@ -34,5 +36,16 @@ public class RegisterUserService implements IregisterUserService {
         user.setEmail(userRegisterDTO.getEmail());
         user.setPassword(userRegisterDTO.getPassword());
         return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUser(UserRegisterDTO userRegisterDTO) {
+
+       User userToUpdate = userRepository.findByEmail(userRegisterDTO.getEmail())
+               .orElseThrow(() -> new RuntimeException("Utilisateur non trouve"));
+
+       userToUpdate.setPassword(userRegisterDTO.getPassword());
+
+       return userRepository.save(userToUpdate);
     }
 }

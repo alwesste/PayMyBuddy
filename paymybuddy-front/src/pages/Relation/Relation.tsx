@@ -3,7 +3,8 @@ import Layout from "../../components/Layout/layout.tsx";
 import "./Relation.scss"
 
 interface User {
-    email: string;
+    email: string,
+    username: string,
 }
 
 const Relation: React.FC = () => {
@@ -22,19 +23,19 @@ const Relation: React.FC = () => {
     };
 
     const  loadConnexion = async() => {
-     try {
-         const res = await fetch(`http://localhost:8080/api/seeConnexion?currentUserEmail=${currentUserEmail}`)
+         try {
+             const res = await fetch(`http://localhost:8080/api/seeConnexion?currentUserEmail=${currentUserEmail}`)
 
-         if(!res.ok) {
-             throw new Error("Erreur lors du chargement des connexions.");
+             if(!res.ok) {
+                 throw new Error("Erreur lors du chargement des connexions.");
+             }
+             const data = await res.json();
+             setConnexions(data)
+
+         } catch (error) {
+             console.error("Erreur :", error);
+             setError("Vous n'avez pas de relation pour le moment");
          }
-         const data = await res.json();
-         setConnexions(data)
-
-     } catch (error) {
-         console.error("Erreur :", error);
-         setError("impossible de charger les connexions");
-     }
     }
 
     useEffect(() => {
@@ -103,16 +104,17 @@ const Relation: React.FC = () => {
             <div className="relation-name">
                 <p className="relation-title">Mes connexions</p>
 
-                {error && <p className="error">{error}</p>}
+                {error && <p>{error}</p>}
 
                 {connexions.length > 0 ? (
                     <ul>
                         {connexions.map((user: User, index) => (
-                            <li key={index}>{user.email}</li>
+                            <li key={index}>{user.username}</li>
                         ))}
                     </ul>
                 ) : (
                     <p></p>
+
                 )}
             </div>
 

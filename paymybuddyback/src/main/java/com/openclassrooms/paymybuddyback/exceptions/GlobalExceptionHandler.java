@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailAlreadyExistException.class)
     public ResponseEntity<String> handleEmailAlreadyExistExceptions(EmailAlreadyExistException  ex) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
     @ExceptionHandler(InvalidConnexionException.class)

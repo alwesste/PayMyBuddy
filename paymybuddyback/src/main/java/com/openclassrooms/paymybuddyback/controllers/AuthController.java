@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 public class AuthController {
@@ -30,7 +33,10 @@ public class AuthController {
 
         if (isAuthenticated) {
             logger.info("L'utilisateur est connecte {}", loginDetailDTO.getEmail());
-            return ResponseEntity.ok().build();
+            LoginDetailDTO currentUser = new LoginDetailDTO(loginDetailDTO.getEmail(), loginDetailDTO.getPassword());
+
+            return ResponseEntity.ok(currentUser);
+
         } else {
             logger.warn("Echec de de connexion de l'utilisateur {}", loginDetailDTO.getEmail());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou mot de passe incorrect");

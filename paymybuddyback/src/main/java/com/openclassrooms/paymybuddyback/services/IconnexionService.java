@@ -1,6 +1,5 @@
 package com.openclassrooms.paymybuddyback.services;
 
-import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.ConnexionDTO;
 import com.openclassrooms.paymybuddyback.modelsDTO.UserConnexionDTO;
 
