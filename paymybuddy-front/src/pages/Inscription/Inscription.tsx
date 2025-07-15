@@ -32,8 +32,6 @@ const Inscription: React.FC = () => {
                 }
                 localStorage.setItem("currentUserEmail", formData.email);
                 localStorage.setItem("currentUserPassword", formData.password);
-                console.log("Inscription réussie, statut :", response.status);
-                console.log("formdata", formData);
                 navigate("/transfer");
             })
             .catch(error => {

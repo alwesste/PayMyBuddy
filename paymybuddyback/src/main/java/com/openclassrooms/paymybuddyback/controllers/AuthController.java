@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api")
 public class AuthController {
@@ -29,6 +26,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDetailDTO loginDetailDTO) {
+
         boolean isAuthenticated = authService.login(loginDetailDTO);
 
         if (isAuthenticated) {

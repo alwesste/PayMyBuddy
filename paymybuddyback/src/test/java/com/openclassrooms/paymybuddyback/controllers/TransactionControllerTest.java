@@ -27,7 +27,7 @@ public class TransactionControllerTest {
     @Test
     void transactionTest() throws Exception {
 
-        TransactionDTO newTransaction = new TransactionDTO("geremi", "paul", "Payement de avril" ,150.00);
+        TransactionDTO newTransaction = new TransactionDTO("geremi@gmail.com", "paul@gmail.com", "Payement de avril pour paul" ,150.00);
 
         mockMvc.perform(post("/api/transaction")
                     .contentType("application/json")
@@ -38,7 +38,7 @@ public class TransactionControllerTest {
 
     @Test
     void shouldReturnNotFoundWhenSenderDoesNotExist() throws Exception {
-        TransactionDTO transactionDTO = new TransactionDTO("nobodyHere", "paul", "Paiement test", 50.0);
+        TransactionDTO transactionDTO = new TransactionDTO("nobodyHere", "paul@gmail.com", "Paiement test", 50.0);
 
         mockMvc.perform(post("/api/transaction")
                 .contentType("application/json")
@@ -48,7 +48,7 @@ public class TransactionControllerTest {
 
     @Test
     void shouldReturnNotFoundWhenReceiverDoesNotExist() throws Exception {
-        TransactionDTO transactionDTO = new TransactionDTO("geremi", "nobodyHere", "Paiement test", 50.0);
+        TransactionDTO transactionDTO = new TransactionDTO("geremi@gmail.com", "nobodyHere", "Paiement test", 50.0);
 
         mockMvc.perform(post("/api/transaction")
                 .contentType("application/json")
@@ -58,7 +58,7 @@ public class TransactionControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenSenderAndReceiverAreSame() throws Exception {
-        TransactionDTO transactionDTO = new TransactionDTO("geremi", "geremi", "paying_mysefl", 50.0);
+        TransactionDTO transactionDTO = new TransactionDTO("geremi@gmail.com", "geremi@gmail.com", "paying_mysefl", 50.0);
 
         mockMvc.perform(post("/api/transaction")
                 .contentType("application/json")

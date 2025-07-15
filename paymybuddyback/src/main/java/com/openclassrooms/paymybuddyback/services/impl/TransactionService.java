@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,7 +36,7 @@ public class TransactionService implements ITransactionService {
         User sender = userRepository.findByEmail(transactionDTO.getSenderUsername())
                 .orElseThrow(() -> new UserNotFoundException("Expéditeur introuvable"));
 
-        User receiver = userRepository.findByUsername(transactionDTO.getReceiverUsername()) // changer pas email qui est la cle
+        User receiver = userRepository.findByEmail(transactionDTO.getReceiverUsername()) // changer pas email qui est la cle
                 .orElseThrow(() -> new UserNotFoundException("Destinataire introuvable"));
 
         if (sender.getUsername().equalsIgnoreCase(receiver.getUsername())) {
@@ -62,15 +61,15 @@ public class TransactionService implements ITransactionService {
 
 
         List<Transaction> transactionList = transactionRepository.findBySenderId(currentUser.getId());
-                return transactionList.stream()
-                        .map(transaction -> new TransactionDTO(
-                                transaction.getSender().getUsername(),
-                                transaction.getReceiver().getUsername(),
-                                transaction.getDescription(),
-                                transaction.getAmount()
+        return transactionList.stream()
+                .map(transaction -> new TransactionDTO(
+                        transaction.getSender().getUsername(),
+                        transaction.getReceiver().getUsername(),
+                        transaction.getDescription(),
+                        transaction.getAmount()
 
-                                ))
-                        .toList();
+                ))
+                .toList();
 
     }
 

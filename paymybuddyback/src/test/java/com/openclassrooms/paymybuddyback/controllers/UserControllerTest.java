@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddyback.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -51,7 +53,29 @@ public class UserControllerTest {
         mockMvc.perform(post("/api/register")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(existingUser)))
-                .andExpect(status().isConflict());
+                .andExpect(status().isBadRequest());
     }
 
+    @Test
+    void shouldReturnNewPassword() throws Exception {
+        UserRegisterDTO userWithNewPassword = new UserRegisterDTO("geremi", "geremi@gmail.com", "newPasswordForTheTest");
+
+        mockMvc.perform(post("/api/updatePassword")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(userWithNewPassword)))
+                .andExpect(status().isAccepted());
+
+        User updatetedUser = userRepository.findByEmail(userWithNewPassword.getEmail()).orElseThrow();
+        assertEquals(userWithNewPassword.getPassword(), updatetedUser.getPassword());
+    }
+
+    @Test
+    void shouldReturnErrorNotFoundException() throws Exception {
+        UserRegisterDTO noUserFound = new UserRegisterDTO("noName", "noEmail", "noPassword");
+
+        mockMvc.perform(post("/api/updatePassword")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(noUserFound)))
+                .andExpect(status().isNotFound());
+    }
 }

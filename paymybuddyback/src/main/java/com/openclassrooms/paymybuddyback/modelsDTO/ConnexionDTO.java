@@ -1,6 +1,8 @@
 package com.openclassrooms.paymybuddyback.modelsDTO;
 
-public class ConnexionDTO {
+import java.io.Serializable;
+
+public class ConnexionDTO implements Serializable {
 
     private String currentUserEmail;
     private String targetUserEmail;

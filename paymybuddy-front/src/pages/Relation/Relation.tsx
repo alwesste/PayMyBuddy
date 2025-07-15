@@ -9,6 +9,7 @@ interface User {
 
 const Relation: React.FC = () => {
 
+    const existingRelations = JSON.parse(localStorage.getItem("relations") || "[]");
     const currentUserEmail: string | null = localStorage.getItem("currentUserEmail");
     const [formData, setFormData] = useState({
         targetUserEmail: "",
@@ -60,6 +61,10 @@ const Relation: React.FC = () => {
             })
             .then(() => {
                 loadConnexion();
+                if (!existingRelations.includes(formData.targetUserEmail)) {
+                   existingRelations.push(formData.targetUserEmail)
+                }
+                localStorage.setItem("relations", JSON.stringify(existingRelations));
                 setFormData({...formData, targetUserEmail: ""});
                 setError("");
             })

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,13 +27,21 @@ public class ConnexionController {
     @PostMapping("/addConnexion")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void connexion(@RequestBody ConnexionDTO connexionDTO) {
-        connexionService.addConnexionWithEmail(connexionDTO);
+        try {
+            connexionService.addConnexionWithEmail(connexionDTO);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
     @GetMapping("/seeConnexion")
     public List<UserConnexionDTO> getConnexion(@RequestParam String currentUserEmail) {
-        return connexionService.getAllUserFromConnexion(currentUserEmail);
+        try{
+            return connexionService.getAllUserFromConnexion(currentUserEmail);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
 

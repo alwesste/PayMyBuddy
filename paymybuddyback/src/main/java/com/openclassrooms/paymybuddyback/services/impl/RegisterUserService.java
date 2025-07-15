@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddyback.services.impl;
 
 import com.openclassrooms.paymybuddyback.exceptions.EmailAlreadyExistException;
+import com.openclassrooms.paymybuddyback.exceptions.UserNotFoundException;
 import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
@@ -20,7 +21,7 @@ public class RegisterUserService implements IregisterUserService {
 
     private final UserRepository userRepository;
 
-    public RegisterUserService( UserRepository userRepository) {
+    public RegisterUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -41,11 +42,12 @@ public class RegisterUserService implements IregisterUserService {
     @Override
     public User updateUser(UserRegisterDTO userRegisterDTO) {
 
-       User userToUpdate = userRepository.findByEmail(userRegisterDTO.getEmail())
-               .orElseThrow(() -> new RuntimeException("Utilisateur non trouve"));
+        User userToUpdate = userRepository.findByEmail(userRegisterDTO.getEmail())
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouve"));
 
-       userToUpdate.setPassword(userRegisterDTO.getPassword());
+        userToUpdate.setPassword(userRegisterDTO.getPassword());
 
-       return userRepository.save(userToUpdate);
+        return userRepository.save(userToUpdate);
     }
+
 }

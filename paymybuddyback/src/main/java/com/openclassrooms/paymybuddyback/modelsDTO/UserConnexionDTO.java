@@ -3,7 +3,7 @@ package com.openclassrooms.paymybuddyback.modelsDTO;
 public class UserConnexionDTO {
     private Integer id;
     private String email;
-    private String Username;
+    private String username;
 
     public UserConnexionDTO() {
     }
@@ -11,7 +11,7 @@ public class UserConnexionDTO {
     public UserConnexionDTO(Integer id, String email, String username) {
         this.id = id;
         this.email = email;
-        Username = username;
+        this.username = username;
     }
 
     public Integer getId() {
@@ -31,10 +31,10 @@ public class UserConnexionDTO {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 }
