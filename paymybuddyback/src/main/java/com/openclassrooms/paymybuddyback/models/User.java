@@ -1,9 +1,6 @@
 package com.openclassrooms.paymybuddyback.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "app_user")
@@ -17,32 +14,16 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String  password;
+    private String password;
 
-    @OneToMany(mappedBy = "sender")
-    private List<Transaction> sentTransactions;
+    public User() {
+    }
 
-    @OneToMany(mappedBy = "receiver")
-    private List<Transaction> receivedTransactions;
-
-//    @ManyToMany
-//    @JoinTable(
-//            name = "connexion",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "contact_id")
-//    )
-//    private List<User> contacts;
-
-
-    public User() {}
-
-    public User(int id, String username, String email, String password, List<Transaction> sentTransactions, List<Transaction> receivedTransactions) {
+    public User(int id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.sentTransactions = sentTransactions;
-        this.receivedTransactions = receivedTransactions;
     }
 
     public int getId() {
@@ -75,21 +56,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Transaction> getSentTransactions() {
-        return sentTransactions;
-    }
-
-    public void setSentTransactions(List<Transaction> sentTransactions) {
-        this.sentTransactions = sentTransactions;
-    }
-
-    public List<Transaction> getReceivedTransactions() {
-        return receivedTransactions;
-    }
-
-    public void setReceivedTransactions(List<Transaction> receivedTransactions) {
-        this.receivedTransactions = receivedTransactions;
     }
 }

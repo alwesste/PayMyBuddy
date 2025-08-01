@@ -24,14 +24,14 @@ public class AuthService implements IAuthService {
     @Override
     public boolean login(LoginDetailDTO loginDetailDTO) {
         try {
-            Optional<User> userOpt = userRepository.findByEmail(loginDetailDTO.getEmail());
+            Optional<User> userOpt = userRepository.findByEmail(loginDetailDTO.email());
 
-            if (userOpt.isPresent() && userOpt.get().getPassword().equals(loginDetailDTO.getPassword())) {
-                logger.info("Authentification réussie pour l'utilisateur : {}", loginDetailDTO.getEmail());
+            if (userOpt.isPresent() && userOpt.get().getPassword().equals(loginDetailDTO.password())) {
+                logger.info("Authentification réussie pour l'utilisateur : {}", loginDetailDTO.email());
                 return true;
             }
 
-            logger.warn("Échec de l'authentification pour l'utilisateur : {}", loginDetailDTO.getEmail());
+            logger.warn("Échec de l'authentification pour l'utilisateur : {}", loginDetailDTO.email());
             return false;
 
         } catch (Exception e) {

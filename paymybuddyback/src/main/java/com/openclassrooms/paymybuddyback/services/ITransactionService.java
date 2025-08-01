@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ITransactionService {
 
-    public Transaction moneyTransaction(TransactionDTO transactionDTO);
+    public Transaction makeMoneyTransaction(TransactionDTO transactionDTO);
 
     public List<TransactionDTO> seeMeneyTransaction(String currentUserEmail);
 }

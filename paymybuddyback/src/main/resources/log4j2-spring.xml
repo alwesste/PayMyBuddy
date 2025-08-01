@@ -30,7 +30,6 @@
             <AppenderRef ref="FileLogger"/>
         </Root>
 
-        <!-- Loggers spécifiques -->
         <Logger name="com.openclassrooms.paymybuddyback.controllers" level="DEBUG" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>

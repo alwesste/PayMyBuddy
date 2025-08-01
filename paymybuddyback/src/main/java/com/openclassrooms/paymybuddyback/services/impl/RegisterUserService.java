@@ -11,8 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @Transactional
 public class RegisterUserService implements IregisterUserService {
@@ -27,25 +25,25 @@ public class RegisterUserService implements IregisterUserService {
 
     @Override
     public User register(UserRegisterDTO userRegisterDTO) {
-        if (userRepository.existsByEmail(userRegisterDTO.getEmail())) {
+        if (userRepository.existsByEmail(userRegisterDTO.email())) {
             logger.error("Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.");
-            throw new EmailAlreadyExistException("Email déjà utilisé : " + userRegisterDTO.getEmail());
+            throw new EmailAlreadyExistException("Email déjà utilisé : " + userRegisterDTO.email());
         }
 
         User user = new User();
-        user.setUsername(userRegisterDTO.getUsername());
-        user.setEmail(userRegisterDTO.getEmail());
-        user.setPassword(userRegisterDTO.getPassword());
+        user.setUsername(userRegisterDTO.username());
+        user.setEmail(userRegisterDTO.email());
+        user.setPassword(userRegisterDTO.password());
         return userRepository.save(user);
     }
 
     @Override
     public User updateUser(UserRegisterDTO userRegisterDTO) {
 
-        User userToUpdate = userRepository.findByEmail(userRegisterDTO.getEmail())
+        User userToUpdate = userRepository.findByEmail(userRegisterDTO.email())
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouve"));
 
-        userToUpdate.setPassword(userRegisterDTO.getPassword());
+        userToUpdate.setPassword(userRegisterDTO.password());
 
         return userRepository.save(userToUpdate);
     }

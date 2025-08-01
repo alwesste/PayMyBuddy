@@ -7,6 +7,7 @@ import com.openclassrooms.paymybuddyback.models.Connexion;
 import com.openclassrooms.paymybuddyback.models.User;
 import com.openclassrooms.paymybuddyback.modelsDTO.ConnexionDTO;
 import com.openclassrooms.paymybuddyback.modelsDTO.UserConnexionDTO;
+import com.openclassrooms.paymybuddyback.modelsDTOMapper.UserConnexionDTOMapper;
 import com.openclassrooms.paymybuddyback.repositories.ConnexionRepository;
 import com.openclassrooms.paymybuddyback.repositories.UserRepository;
 import com.openclassrooms.paymybuddyback.services.IconnexionService;
@@ -24,26 +25,27 @@ public class ConnexionService implements IconnexionService {
     private final static Logger logger = LogManager.getLogger(ConnexionService.class);
 
     private final UserRepository userRepository;
-
     private final ConnexionRepository connexionRepository;
+    private final UserConnexionDTOMapper connexionDTOMapper;
 
-    public ConnexionService(UserRepository userRepository, ConnexionRepository connexionRepository) {
+    public ConnexionService(UserRepository userRepository, ConnexionRepository connexionRepository, UserConnexionDTOMapper connexionDTOMapper) {
         this.userRepository = userRepository;
         this.connexionRepository = connexionRepository;
+        this.connexionDTOMapper = connexionDTOMapper;
     }
 
     @Override
     public void addConnexionWithEmail(ConnexionDTO connexionDTO) {
 
-        if (connexionDTO.getCurrentUserEmail().equalsIgnoreCase(connexionDTO.getTargetUserEmail())) {
-            throw new InvalidTransactionException("Impossible d'ajouter soi-même comme contact.");
+        if (connexionDTO.currentUserEmail().equalsIgnoreCase(connexionDTO.targetUserEmail())) {
+            throw new InvalidTransactionException("Impossible de s'ajouter sois-même comme contact.");
         }
 
-        User currentUser = userRepository.findByEmail(connexionDTO.getCurrentUserEmail())
-                .orElseThrow(() -> new UserNotFoundException("User introuvable" + connexionDTO.getCurrentUserEmail()));
+        User currentUser = userRepository.findByEmail(connexionDTO.currentUserEmail())
+                .orElseThrow(() -> new UserNotFoundException("User introuvable" + connexionDTO.currentUserEmail()));
 
-        User targetUser = userRepository.findByEmail(connexionDTO.getTargetUserEmail())
-                .orElseThrow(() -> new UserNotFoundException("User introuvable" + connexionDTO.getTargetUserEmail()));
+        User targetUser = userRepository.findByEmail(connexionDTO.targetUserEmail())
+                .orElseThrow(() -> new UserNotFoundException("User introuvable" + connexionDTO.targetUserEmail()));
 
         boolean exists = connexionRepository.existsByUserId1AndUserId2(currentUser.getId(), targetUser.getId());
 
@@ -66,14 +68,8 @@ public class ConnexionService implements IconnexionService {
         List<Connexion> connexions = connexionRepository.findByUserId1(currentUser.getId());
 
         return connexions.stream()
-                .map(connexion -> new UserConnexionDTO(
-                        connexion.getUser2().getId(),
-                        connexion.getUser2().getEmail(),
-                        connexion.getUser2().getUsername()
-                ))
+                .map(connexionDTOMapper)
                 .toList();
     }
-
-
 
 }
