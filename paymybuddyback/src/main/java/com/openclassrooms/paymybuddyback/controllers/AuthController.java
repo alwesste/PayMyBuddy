@@ -30,13 +30,13 @@ public class AuthController {
         boolean isAuthenticated = authService.login(loginDetailDTO);
 
         if (isAuthenticated) {
-            logger.info("L'utilisateur est connecte {}", loginDetailDTO.getEmail());
-            LoginDetailDTO currentUser = new LoginDetailDTO(loginDetailDTO.getEmail(), loginDetailDTO.getPassword());
+            logger.info("L'utilisateur est connecte {}", loginDetailDTO.email());
+            LoginDetailDTO currentUser = new LoginDetailDTO(loginDetailDTO.email(), loginDetailDTO.password());
 
             return ResponseEntity.ok(currentUser);
 
         } else {
-            logger.warn("Echec de de connexion de l'utilisateur {}", loginDetailDTO.getEmail());
+            logger.warn("Echec de de connexion de l'utilisateur {}", loginDetailDTO.email());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou mot de passe incorrect");
         }
     }

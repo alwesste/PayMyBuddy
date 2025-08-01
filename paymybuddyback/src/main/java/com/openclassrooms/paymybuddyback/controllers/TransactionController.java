@@ -24,23 +24,14 @@ public class TransactionController {
     @PostMapping("/transaction")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void transaction(@RequestBody TransactionDTO transactionDTO) {
-        try {
-            logger.info("{} envoie {}$ a {}", transactionDTO.getSenderUsername(), transactionDTO.getAmount(), transactionDTO.getReceiverUsername());
-            transactionService.moneyTransaction(transactionDTO);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+        logger.info("{} envoie {}$ a {}", transactionDTO.senderUsername(), transactionDTO.amount(), transactionDTO.receiverUsername());
+        transactionService.makeMoneyTransaction(transactionDTO);
     }
 
     @GetMapping("/seeTransaction")
-    @ResponseStatus(code = HttpStatus.CREATED)
-
+    @ResponseStatus(code = HttpStatus.OK)
     public List<TransactionDTO> seeMoneyTransaction(@RequestParam String currentUserEmail) {
-        try {
-            return transactionService.seeMeneyTransaction(currentUserEmail);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        logger.info("Affiche les transactions de {}", currentUserEmail);
+        return transactionService.seeMeneyTransaction(currentUserEmail);
     }
 }

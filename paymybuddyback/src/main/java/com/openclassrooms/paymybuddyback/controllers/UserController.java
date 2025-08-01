@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddyback.controllers;
 
 import com.openclassrooms.paymybuddyback.modelsDTO.UserRegisterDTO;
 import com.openclassrooms.paymybuddyback.services.IregisterUserService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -21,23 +22,15 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void registerUser(@RequestBody UserRegisterDTO userRegisterDTO) {
-        try {
-            logger.info("Utilisateur a ajouter: email = {} , prenom = {}", userRegisterDTO.getEmail(), userRegisterDTO.getUsername());
-            registerUserService.register(userRegisterDTO);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void registerUser(@Valid @RequestBody UserRegisterDTO userRegisterDTO) {
+        logger.info("Utilisateur a ajouter: email = {} , prenom = {}", userRegisterDTO.email(), userRegisterDTO.username());
+        registerUserService.register(userRegisterDTO);
     }
 
     @PostMapping("/updatePassword")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void updateUser(@RequestBody UserRegisterDTO userRegisterDTO) {
-        try {
-            logger.info("Le mot de passe a modifier : {}", userRegisterDTO.getPassword());
-            registerUserService.updateUser(userRegisterDTO);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        logger.info("Le mot de passe a modifier : {}", userRegisterDTO.password());
+        registerUserService.updateUser(userRegisterDTO);
     }
 }

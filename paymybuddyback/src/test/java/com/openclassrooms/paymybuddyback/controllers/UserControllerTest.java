@@ -65,8 +65,8 @@ public class UserControllerTest {
                         .content(objectMapper.writeValueAsString(userWithNewPassword)))
                 .andExpect(status().isAccepted());
 
-        User updatetedUser = userRepository.findByEmail(userWithNewPassword.getEmail()).orElseThrow();
-        assertEquals(userWithNewPassword.getPassword(), updatetedUser.getPassword());
+        User updatetedUser = userRepository.findByEmail(userWithNewPassword.email()).orElseThrow();
+        assertEquals(userWithNewPassword.password(), updatetedUser.getPassword());
     }
 
     @Test

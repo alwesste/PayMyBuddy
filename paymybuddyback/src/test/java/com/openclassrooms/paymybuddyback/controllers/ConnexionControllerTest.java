@@ -20,7 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc // Configure un environnement de test pour faire des appels HTTP
 @ActiveProfiles(profiles = "test")
-
 public class ConnexionControllerTest {
 
 
@@ -36,10 +35,11 @@ public class ConnexionControllerTest {
 
         ConnexionDTO connexionDTO = new ConnexionDTO("geremi@gmail.com", "jean@gmail.com");
 
-        mockMvc.perform(post("/api/addConnexion")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(connexionDTO)))
-                .andExpect(status().isCreated());
+            mockMvc.perform(post("/api/addConnexion")
+                            .contentType("application/json")
+                            .content(objectMapper.writeValueAsString(connexionDTO)))
+                    .andExpect(status().isCreated());
+
     }
 
     @Test
