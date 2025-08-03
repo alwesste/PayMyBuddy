@@ -20,7 +20,6 @@ const Profil: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("formData:", formData)
 
         try {
             const response = await fetch("http://localhost:8080/api/updatePassword", {
@@ -30,7 +29,6 @@ const Profil: React.FC = () => {
                 },
                 body: JSON.stringify(formData)
             });
-
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(errorText || "Échec de la mise à jour.");

@@ -8,9 +8,14 @@ import java.util.function.Function;
 
 @Service
 public class UserConnexionDTOMapper implements Function<Connexion, UserConnexionDTO> {
+
+    /**
+     * @param connexion the function argument
+     * @return un objet dto
+     */
     @Override
     public UserConnexionDTO apply(Connexion connexion) {
-        return  new UserConnexionDTO(
+        return new UserConnexionDTO(
                 connexion.getUser2().getEmail(),
                 connexion.getUser2().getUsername()
         );

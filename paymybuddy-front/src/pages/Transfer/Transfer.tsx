@@ -20,6 +20,7 @@ const Transfer: React.FC = () => {
     const currentUserEmail = localStorage.getItem("currentUserEmail");
     const [connexions, setConnexions] = useState<User[]>([]);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         senderUsername: currentUserEmail,
         receiverUsername: "",
@@ -57,6 +58,11 @@ const Transfer: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (formData.amount <=  "0") {
+            setErrorMessage("Vous ne pouvez envoyer un  montant de 0 euros")
+            return;
+        }
         fetch("http://localhost:8080/api/transaction", {
             method: "POST",
             headers: {
@@ -69,11 +75,9 @@ const Transfer: React.FC = () => {
                     throw new Error("Erreur lors du chargement des transfers.");
                 }
                 loadTransactions();
-                console.log('formData', formData);
             })
             .catch((err) => {
                 console.error("Erreur :", err);
-                console.log('formData', formData);
             })
     }
 
@@ -132,6 +136,8 @@ const Transfer: React.FC = () => {
                        onChange={handleChange}
                        required={true}
                 />
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+
 
                 <button className="form-transfer btn">Payer</button>
             </form>
