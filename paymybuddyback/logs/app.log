@@ -814,3 +814,99 @@
 2025-08-03 22:32:50 [http-nio-8080-exec-3] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - Affiche les transactions de Eric@gmail.com
 2025-08-03 22:32:56 [http-nio-8080-exec-4] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - Eric@gmail.com envoie 33.0$ a mathilde@gmail.com
 2025-08-03 22:32:56 [http-nio-8080-exec-5] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - Affiche les transactions de Eric@gmail.com
+2025-08-03 23:00:57 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-08-03 23:00:58 [main] INFO  com.openclassrooms.paymybuddyback.controllers.AuthControllerTest - Starting AuthControllerTest using Java 22.0.2 with PID 41224 (started by leopo in C:\document\Java Openclassrooms\Projet 6\paymybuddy\paymybuddyback)
+2025-08-03 23:00:58 [main] DEBUG com.openclassrooms.paymybuddyback.controllers.AuthControllerTest - Running with Spring Boot v3.4.5, Spring v6.2.8
+2025-08-03 23:00:58 [main] INFO  com.openclassrooms.paymybuddyback.controllers.AuthControllerTest - The following 1 profile is active: "test"
+2025-08-03 23:01:01 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-03 23:01:01 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 167 ms. Found 3 JPA repository interfaces.
+2025-08-03 23:01:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-03 23:01:02 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7054b8a1
+2025-08-03 23:01:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-03 23:01:03 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-03 23:01:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-08-03 23:01:03 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-03 23:01:04 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-03 23:01:04 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-03 23:01:04 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-03 23:01:04 [main] DEBUG org.hibernate.type.descriptor.sql.spi.DdlTypeRegistry - addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@13126d46) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@53c1792d)
+2025-08-03 23:01:04 [main] DEBUG org.hibernate.type.descriptor.sql.spi.DdlTypeRegistry - addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@14922268) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@663b31a)
+2025-08-03 23:01:06 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-03 23:01:06 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03 23:01:07 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-03 23:01:07 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-08-03 23:01:07 [main] INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-08-03 23:01:07 [main] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-08-03 23:01:07 [main] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2025-08-03 23:01:07 [main] INFO  com.openclassrooms.paymybuddyback.controllers.AuthControllerTest - Started AuthControllerTest in 10.895 seconds (process running for 13.522)
+2025-08-03 23:01:09 [main] WARN  com.openclassrooms.paymybuddyback.services.impl.AuthService - Échec de l'authentification pour l'utilisateur : WrongEmail
+2025-08-03 23:01:09 [main] WARN  com.openclassrooms.paymybuddyback.controllers.AuthController - Echec de de connexion de l'utilisateur WrongEmail
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.services.impl.AuthService - Authentification réussie pour l'utilisateur : geremi@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.AuthController - L'utilisateur est connecte geremi@gmail.com
+2025-08-03 23:01:09 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.openclassrooms.paymybuddyback.controllers.ConnexionControllerTest]: ConnexionControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-03 23:01:09 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.openclassrooms.paymybuddyback.PaymybuddybackApplication for test class com.openclassrooms.paymybuddyback.controllers.ConnexionControllerTest
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.ConnexionController - Ajout d'une connexion entre geremi@gmail.com et paul@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.ConnexionController - Ajout d'une connexion entre geremi@gmail.com et jean@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.ConnexionController - Ajout d'une connexion entre shiori@gmail.com et shiori@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.ConnexionController - Ajout d'une connexion entre shiori@gmail.com et nobody@fake.com
+2025-08-03 23:01:09 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.openclassrooms.paymybuddyback.controllers.TransactionControllerTest]: TransactionControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-03 23:01:09 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.openclassrooms.paymybuddyback.PaymybuddybackApplication for test class com.openclassrooms.paymybuddyback.controllers.TransactionControllerTest
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - Affiche les transactions de geremi@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - geremi@gmail.com envoie 50.0$ a nobodyHere
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - geremi@gmail.com envoie 150.0$ a paul@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - geremi@gmail.com envoie 50.0$ a geremi@gmail.com
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.TransactionController - nobodyHere envoie 50.0$ a paul@gmail.com
+2025-08-03 23:01:09 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.openclassrooms.paymybuddyback.controllers.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-03 23:01:09 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.openclassrooms.paymybuddyback.PaymybuddybackApplication for test class com.openclassrooms.paymybuddyback.controllers.UserControllerTest
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.UserController - Utilisateur a ajouter: email = Antoine@gmail.com , prenom = Antoine
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.UserController - Le mot de passe a modifier : newPasswordForTheTest
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.UserController - Utilisateur a ajouter: email = antoine@gmail.com , prenom = Antoine
+2025-08-03 23:01:09 [main] INFO  com.openclassrooms.paymybuddyback.controllers.UserController - Utilisateur a ajouter: email = antoine@gmail.com , prenom = Antoine
+2025-08-03 23:01:09 [main] ERROR com.openclassrooms.paymybuddyback.services.impl.RegisterUserService - Erreur lors de l'enregistrement d'un utilisateur dans la base de donnee.
+2025-08-03 23:01:10 [main] INFO  com.openclassrooms.paymybuddyback.controllers.UserController - Le mot de passe a modifier : noPassword
+2025-08-03 23:01:10 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.openclassrooms.paymybuddyback.PaymybuddybackApplicationTests]: PaymybuddybackApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-03 23:01:10 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.openclassrooms.paymybuddyback.PaymybuddybackApplication for test class com.openclassrooms.paymybuddyback.PaymybuddybackApplicationTests
+2025-08-03 23:01:10 [main] INFO  com.openclassrooms.paymybuddyback.PaymybuddybackApplicationTests - Starting PaymybuddybackApplicationTests using Java 22.0.2 with PID 41224 (started by leopo in C:\document\Java Openclassrooms\Projet 6\paymybuddy\paymybuddyback)
+2025-08-03 23:01:10 [main] INFO  com.openclassrooms.paymybuddyback.PaymybuddybackApplicationTests - The following 1 profile is active: "test"
+2025-08-03 23:01:10 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-03 23:01:10 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 3 JPA repository interfaces.
+2025-08-03 23:01:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-08-03 23:01:10 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@2b6aca7f
+2025-08-03 23:01:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-08-03 23:01:10 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-03 23:01:10 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-03 23:01:10 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-03 23:01:10 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-03 23:01:10 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-03 23:01:10 [main] DEBUG org.hibernate.type.descriptor.sql.spi.DdlTypeRegistry - addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@35295b2d) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@2f510a24)
+2025-08-03 23:01:10 [main] DEBUG org.hibernate.type.descriptor.sql.spi.DdlTypeRegistry - addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@789da93) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@4915bf72)
+2025-08-03 23:01:10 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-03 23:01:10 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03 23:01:10 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-03 23:01:10 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-08-03 23:01:10 [main] INFO  com.openclassrooms.paymybuddyback.PaymybuddybackApplicationTests - Started PaymybuddybackApplicationTests in 0.861 seconds (process running for 16.542)
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-08-03 23:01:10 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-08-03 23:03:07 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-03 23:03:07 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-03 23:03:07 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03 23:03:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-03 23:03:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
