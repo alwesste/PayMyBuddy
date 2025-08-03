@@ -21,6 +21,10 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    /**
+     * Permet d'effectuer des transactions vers un utilisateur.
+     * @param transactionDTO un objet qui prend un String senderUsername, String receiverUsername, String description, double amount.
+     */
     @PostMapping("/transaction")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void transaction(@RequestBody TransactionDTO transactionDTO) {
@@ -28,6 +32,11 @@ public class TransactionController {
         transactionService.makeMoneyTransaction(transactionDTO);
     }
 
+    /**
+     *
+     * @param currentUserEmail
+     * @return une liste des transactions d'un utilisateur.
+     */
     @GetMapping("/seeTransaction")
     @ResponseStatus(code = HttpStatus.OK)
     public List<TransactionDTO> seeMoneyTransaction(@RequestParam String currentUserEmail) {

@@ -23,6 +23,11 @@ public class ConnexionController {
         this.connexionService = connexionService;
     }
 
+    /**
+     * Creer une connexion entre deux utilisateurs
+     *
+     * @param connexionDTO l'objet qui contient le current User email ainsi que le target user email.
+     */
     @PostMapping("/addConnexion")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void connexion(@RequestBody ConnexionDTO connexionDTO) {
@@ -31,6 +36,10 @@ public class ConnexionController {
     }
 
 
+    /**
+     * @param currentUserEmail
+     * @return la liste des utilisateurs connectes
+     */
     @GetMapping("/seeConnexion")
     public List<UserConnexionDTO> getConnexion(@RequestParam String currentUserEmail) {
         return connexionService.getAllUserFromConnexion(currentUserEmail);

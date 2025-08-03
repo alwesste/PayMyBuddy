@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.function.Function;
 
 @Service
-public class TransactionDTOMapper implements Function <Transaction, TransactionDTO> {
+public class TransactionDTOMapper implements Function<Transaction, TransactionDTO> {
+
+    /**
+     * @param transaction the function argument
+     * @return un objet dto
+     */
     @Override
     public TransactionDTO apply(Transaction transaction) {
         return new TransactionDTO(

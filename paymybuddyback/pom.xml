@@ -105,24 +105,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.1.Final</version> <!-- version compatible Jakarta Validation 3.x -->
         </dependency>
-
-
-        <!--        From here i test other stuff-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.apache.tomcat.embed</groupId>-->
-<!--            <artifactId>tomcat-embed-jasper</artifactId>-->
-<!--            <version>10.1.18</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>javax.servlet</groupId>-->
-<!--            <artifactId>jstl</artifactId>-->
-<!--            <version>1.2</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-
     </dependencies>
 
 

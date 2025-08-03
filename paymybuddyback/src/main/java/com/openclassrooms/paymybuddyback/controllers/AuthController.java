@@ -24,6 +24,11 @@ public class AuthController {
     }
 
 
+    /**
+     *
+     * @param loginDetailDTO
+     * @return une reponse status ok si la connection est etablie a partir de l'email du mot de passe
+     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDetailDTO loginDetailDTO) {
 

@@ -14,5 +14,6 @@ public record UserRegisterDTO (
 
         @Size(min = 4, message = "Le mot de passe doit contenir au moins 4 caracteres")
         @NotBlank
-        String password)
+        String password
+)
 {}
