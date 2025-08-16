@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import './Profil.scss'
 import Layout from "../../components/Layout/layout.tsx";
 
@@ -6,19 +6,13 @@ const Profil: React.FC = () => {
 
     const currentUserEmail: string | null = localStorage.getItem("currentUserEmail");
     const currentUserPassword: string | null = localStorage.getItem("currentUserPassword");
-    const [successChange, setSuccessChange] = useState<boolean>();
+
+    const [successChange, setSuccessChange] = useState<boolean | null>(null);
     const [formData, setFormData] = useState({
         username: "",
         email: currentUserEmail ?? "",
         password: currentUserPassword ?? "",
     })
-    const [version, setVersion] = useState("");
-    useEffect(() => {
-        fetch("/api/version")
-            .then((res) => res.json())
-            .then((data) => setVersion(data.version))
-            .catch((err) => console.error("Erreur récupération version:", err));
-    }, []);
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -28,7 +22,7 @@ const Profil: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+        setSuccessChange(null);
         try {
             const response = await fetch("http://localhost:8080/api/updatePassword", {
                 method: "POST",
@@ -82,11 +76,10 @@ const Profil: React.FC = () => {
                            onChange={handleChange}
                            placeholder="Votre mot de passe"/>
                 </div>
-                <p>
-                    {successChange ? "La modification a ete prise en compte" : 'Votre requete a echoue'}
-                </p>
-                <h1>Mon App React</h1>
-                <p>Version : {version}</p>
+
+                {successChange === true && <p>La modification a été prise en compte ✅</p>}
+                {successChange === false && <p>Votre requête a échoué ❌</p>}
+
 
 
                 <button type="submit">Modifier</button>
