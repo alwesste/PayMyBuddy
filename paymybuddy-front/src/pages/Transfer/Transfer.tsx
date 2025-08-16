@@ -1,21 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "./Transfer.scss"
+import {User} from  "../../types/User.ts";
+import {Transaction} from  "../../types/Transaction.ts"
 import Layout from "../../components/Layout/layout.tsx";
-
 const Transfer: React.FC = () => {
-
-    interface User {
-        id: number;
-        email: string;
-        username: string;
-    }
-
-    interface Transaction {
-        senderUsername: string | null;
-        receiverUsername: string | null;
-        description: string;
-        amount: number;
-    }
 
     const currentUserEmail = localStorage.getItem("currentUserEmail");
     const [connexions, setConnexions] = useState<User[]>([]);
@@ -102,10 +90,10 @@ const Transfer: React.FC = () => {
                     name="receiverUsername"
                     id="relation"
                     required
-                    onChange={ async (e) => {
+                    onChange={async (e) => {
                         setFormData({
                             ...formData,
-                            receiverUsername:  e.target.value
+                            receiverUsername: e.target.value
 
                         });
                     }}
@@ -144,22 +132,27 @@ const Transfer: React.FC = () => {
 
             <div className="transfer">
                 <h1 className="transfer-title">Mes transactions</h1>
-                <div>
-                    <div className="transfer-detail-title">
-                        <h2>Relation</h2>
-                        <h2>Description</h2>
-                        <h2>Montant</h2>
-                    </div>
-                    <div>{transactions?.map((transaction: Transaction, index: number) => (
-                        <div key={index} className="transfer-detail">
-                            <span>{transaction.receiverUsername}</span>
-                            <span>{transaction.description}</span>
-                            <span>{transaction.amount} €</span>
-                        </div>
-                    )).reverse()}
-                    </div>
-                </div>
 
+                {!transactions.length ? (
+                    <p>Pas de transactions effectues pour le moments...</p>
+                ) : (
+                    <div>
+                        <div className="transfer-detail-title">
+                            <h2>Relation</h2>
+                            <h2>Description</h2>
+                            <h2>Montant</h2>
+                        </div>
+                        <div>
+                            {transactions.map((transaction, index) => (
+                                <div key={index} className="transfer-detail">
+                                    <span>{transaction.receiverUsername}</span>
+                                    <span>{transaction.description}</span>
+                                    <span>{transaction.amount} €</span>
+                                </div>
+                            )).reverse()}
+                        </div>
+                    </div>
+                )}
             </div>
 
 

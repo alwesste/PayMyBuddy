@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Layout from "../../components/Layout/layout.tsx";
 import "./Relation.scss"
-
-interface User {
-    email: string,
-    username: string,
-}
+import {User} from "../../types/User.ts"
 
 const Relation: React.FC = () => {
 
