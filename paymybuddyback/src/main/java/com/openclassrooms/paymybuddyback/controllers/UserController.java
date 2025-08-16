@@ -39,8 +39,7 @@ public class UserController {
      */
     @PostMapping("/updatePassword")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public void updateUser(@RequestBody UserRegisterDTO userRegisterDTO) {
-        logger.info("Le mot de passe a modifier : {}", userRegisterDTO.password());
+    public void updateUser(@Valid @RequestBody UserRegisterDTO userRegisterDTO) {
         registerUserService.updateUser(userRegisterDTO);
     }
 }

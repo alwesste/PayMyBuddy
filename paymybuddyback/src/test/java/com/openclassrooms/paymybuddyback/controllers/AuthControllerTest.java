@@ -40,7 +40,7 @@ public class AuthControllerTest {
 
     @Test
     void shouldReturnUnauthorized() throws Exception {
-        LoginDetailDTO userToLog = new LoginDetailDTO("WrongEmail", "WrongPassword");
+        LoginDetailDTO userToLog = new LoginDetailDTO("WrongEmail@gmail.com", "WrongPassword");
 
         mockMvc.perform(post("/api/login")
                         .contentType("application/json")

@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddyback.controllers;
 
 import com.openclassrooms.paymybuddyback.modelsDTO.TransactionDTO;
 import com.openclassrooms.paymybuddyback.services.ITransactionService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class TransactionController {
      */
     @PostMapping("/transaction")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void transaction(@RequestBody TransactionDTO transactionDTO) {
+    public void transaction(@Valid @RequestBody TransactionDTO transactionDTO) {
         logger.info("{} envoie {}$ a {}", transactionDTO.senderUsername(), transactionDTO.amount(), transactionDTO.receiverUsername());
         transactionService.makeMoneyTransaction(transactionDTO);
     }

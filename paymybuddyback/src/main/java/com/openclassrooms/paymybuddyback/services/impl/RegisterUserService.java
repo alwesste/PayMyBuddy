@@ -9,6 +9,7 @@ import com.openclassrooms.paymybuddyback.services.IregisterUserService;
 import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,9 +19,11 @@ public class RegisterUserService implements IregisterUserService {
     private final static Logger logger = LogManager.getLogger(RegisterUserService.class);
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public RegisterUserService(UserRepository userRepository) {
+    public RegisterUserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class RegisterUserService implements IregisterUserService {
         User user = new User();
         user.setUsername(userRegisterDTO.username());
         user.setEmail(userRegisterDTO.email());
-        user.setPassword(userRegisterDTO.password());
+        user.setPassword(passwordEncoder.encode(userRegisterDTO.password()));
         return userRepository.save(user);
     }
 
@@ -43,8 +46,8 @@ public class RegisterUserService implements IregisterUserService {
         User userToUpdate = userRepository.findByEmail(userRegisterDTO.email())
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouve"));
 
-        userToUpdate.setPassword(userRegisterDTO.password());
-
+        userToUpdate.setPassword(passwordEncoder.encode(userRegisterDTO.password()));
+        logger.debug("Le nouveau mot de passe est {}", passwordEncoder.encode(userRegisterDTO.password()));
         return userRepository.save(userToUpdate);
     }
 

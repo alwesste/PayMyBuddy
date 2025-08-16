@@ -14,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -50,12 +49,7 @@ public class TransactionService implements ITransactionService {
             throw new InvalidTransactionException("Le montant de la transaction ne peut etre negatif");
         }
 
-        Transaction transaction = new Transaction();
-        transaction.setSender(sender);
-        transaction.setReceiver(receiver);
-        transaction.setDescription(transactionDTO.description());
-        transaction.setAmount(transactionDTO.amount());
-        transaction.setDate(new Date());
+        Transaction transaction = transactionDTOMapper.toEntity(transactionDTO, sender, receiver);
 
         return transactionRepository.save(transaction);
 

@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddyback.controllers;
 
 import com.openclassrooms.paymybuddyback.modelsDTO.LoginDetailDTO;
 import com.openclassrooms.paymybuddyback.services.IAuthService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class AuthController {
      * @return une reponse status ok si la connection est etablie a partir de l'email du mot de passe
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDetailDTO loginDetailDTO) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginDetailDTO loginDetailDTO) {
 
         boolean isAuthenticated = authService.login(loginDetailDTO);
 

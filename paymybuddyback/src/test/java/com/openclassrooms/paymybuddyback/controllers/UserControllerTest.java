@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,6 +31,9 @@ public class UserControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Test
     void registerUserTest() throws Exception {
@@ -66,12 +71,14 @@ public class UserControllerTest {
                 .andExpect(status().isAccepted());
 
         User updatetedUser = userRepository.findByEmail(userWithNewPassword.email()).orElseThrow();
-        assertEquals(userWithNewPassword.password(), updatetedUser.getPassword());
-    }
+        assertTrue(passwordEncoder.matches(
+                "newPasswordForTheTest",
+                updatetedUser.getPassword()
+        ));    }
 
     @Test
     void shouldReturnErrorNotFoundException() throws Exception {
-        UserRegisterDTO noUserFound = new UserRegisterDTO("noName", "noEmail", "noPassword");
+        UserRegisterDTO noUserFound = new UserRegisterDTO("noName", "", "noPassword");
 
         mockMvc.perform(post("/api/updatePassword")
                         .contentType("application/json")

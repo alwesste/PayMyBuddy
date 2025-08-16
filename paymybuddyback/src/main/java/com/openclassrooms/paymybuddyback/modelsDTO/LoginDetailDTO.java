@@ -1,4 +1,14 @@
 package com.openclassrooms.paymybuddyback.modelsDTO;
 
-public record LoginDetailDTO (String email, String password) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record LoginDetailDTO (
+        @Email
+        String email,
+
+        @Size(min = 4, message = "Le mot de passe doit contenir au moins 4 carracteres")
+        @NotBlank
+        String password) {
 }

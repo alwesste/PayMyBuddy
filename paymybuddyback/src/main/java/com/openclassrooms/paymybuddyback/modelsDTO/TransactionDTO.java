@@ -1,4 +1,11 @@
 package com.openclassrooms.paymybuddyback.modelsDTO;
 
-public record TransactionDTO (String senderUsername, String receiverUsername, String description, double amount) {
+import jakarta.validation.constraints.NotNull;
+
+public record TransactionDTO (
+        String senderUsername,
+        String receiverUsername,
+        String description,
+        @NotNull
+        double amount) {
 }
